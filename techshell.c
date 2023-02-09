@@ -11,7 +11,7 @@ void printDir() {
 }
 
 // return the number of arguments in the input
-int inputLen(char input[]) {
+int inputLen(char input[], int* reDirs) {
 	// copy of input
 	char inputcpy[255];
 	strcpy(inputcpy, input);
@@ -19,6 +19,10 @@ int inputLen(char input[]) {
 	int count = 0;
 	// loop through input, count number of args
 	while (tok != NULL) {
+		// if token is a redirection, increment redir globally
+		if (!strcmp(tok, ">") || !strcmp(tok, "<")) {
+			*reDirs = *reDirs + 1;
+		}
 		tok = strtok(NULL, " ");
 		count++;
 	}
@@ -62,6 +66,14 @@ void execCommand(char *args[]) {
 		}
 }
 
+void reDirIn(char* args[], char file[]) {
+
+}
+
+void reDirOut(char* args[], char file[]) {
+
+}
+
 // main
 int main(int argc, char argv[]) {
 	char input[255];
@@ -71,8 +83,10 @@ int main(int argc, char argv[]) {
 		// exit case
 		if (!strcmp(input, "exit\n"))
 			break;
+		// count number of redirections
+		int reDirs = 0;
 		// set size of argument list
-		char* args[inputLen(input) + 1];
+		char* args[inputLen(input, &reDirs) + 1];
 		// parsed arguments by space and add to argument list
 		parseInput(input, args);
 		// execute arguments
