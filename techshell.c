@@ -1,8 +1,14 @@
+///////////////////////////////////////////
+// Names: Jadyn Falls, Lael Hamilton
+// Date: 2/11/23
+// Desc: Simple shell with I/O redirections
+///////////////////////////////////////////
 #include <stdio.h>
 #include <unistd.h>
 #include <string.h>
 #include <stdlib.h>
 #include <errno.h>
+#include <sys/wait.h>
 
 // print out current working directory
 void printDir() {
