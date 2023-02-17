@@ -3,4 +3,4 @@ A simple shell made in c
 
 Names: Jadyn Falls, Lael Hamilton
 
-Allows a user to repeatedly enter input to run commands. Once recieved, the users input is parsed and then interpreted, which will determine any I/O redirections to or from a file. The "shell" is then forked and the child process executes the users arguments.
+Allows a user to repeatedly enter input to run commands through the main function. Once recieved, the users input is parsed, and an argument array is dynamically built with malloc and realloc and redirection files are gotten in the parseInput function. Then the command is executed in the execCommand function by forking the process and having the child do an execvp call with the arguments provided from the parse input function.
