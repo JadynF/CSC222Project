@@ -1,4 +1,4 @@
-# CSC222Project
+# Seashell
 A simple shell made in c
 
 Names: Jadyn Falls, Lael Hamilton
